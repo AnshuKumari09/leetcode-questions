@@ -17,27 +17,51 @@
 // };
 
 
+// class Solution {
+// public:
+//     int removeDuplicates(vector<int>& nums) {
+//         set<int>visited;
+//         int n=nums.size();
+//         if(n==0){
+//             return 0;
+//         }
+//          int i=0;
+//          int j=0;
+//         while(j<n){
+//             if(visited.count(nums[j])==0){ // j visited nhi hai
+//                // visited mark karo
+//                visited.insert(nums[j]);
+//                nums[i]=nums[j];
+//                i++;
+//             }
+//             j++;
+//         }
+//        // ffill the place with spaces
+      
+//        return i;
+//     }
+// };
+
+
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        set<int>visited;
+       
         int n=nums.size();
         if(n==0){
             return 0;
         }
-         int i=0;
-         int j=0;
-        while(j<n){
-            if(visited.count(nums[j])==0){ // j visited nhi hai
-               // visited mark karo
-               visited.insert(nums[j]);
-               nums[i]=nums[j];
-               i++;
-            }
-            j++;
-        }
-       // ffill the place with spaces
+      int i=0;
       
-       return i;
+      for(int j=1;j<n;j++){
+          if(nums[i]!=nums[j]){
+            i++;
+            nums[i]=nums[j];
+             
+          }
+        
+      }
+      
+       return i+1;
     }
 };
