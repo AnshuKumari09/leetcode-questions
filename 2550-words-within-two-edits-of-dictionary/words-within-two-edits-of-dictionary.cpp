@@ -11,7 +11,7 @@ public:
                     if(query[i]!=dict[i]){
                         countNotMatching++;
                     }
-                    if(countNotMatching>2 || query.length()!=dict.length()){
+                    if(countNotMatching>2){
                         break;
                     }
                     i++;
