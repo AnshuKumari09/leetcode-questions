@@ -55,6 +55,34 @@
 
 
 
+// class Solution {
+// public:
+//     int subarraySum(vector<int>& nums, int k) {
+//         // with two pointer method
+//         int n=nums.size();
+//         int sum=0;
+//         vector<int>vec;
+//        for(int i=0;i<n;i++){
+//            sum+=nums[i];
+//            vec.push_back(sum);
+//        }
+//         int res=0;
+        
+//     for(int i=0;i<n;i++){
+//         if(vec[i]==k){
+//                 res++;
+//             }
+//         for(int j=i+1;j<n;j++){
+            
+//             if((vec[j]-vec[i])==k){
+//                 res++;
+//             }
+//         }
+//        }
+//         return res;
+//     }
+// };
+
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
@@ -66,19 +94,18 @@ public:
            sum+=nums[i];
            vec.push_back(sum);
        }
-        int res=0;
-        
-    for(int i=0;i<n;i++){
-        if(vec[i]==k){
-                res++;
+       int res=0;
+        unordered_map<int,int>mp;
+        mp[0]=1;
+        for(int i=0;i<n;i++){
+            int num=vec[i]-k;
+            for(auto m:mp){
+                if(m.first==num){
+                    res+=m.second;
+                }
             }
-        for(int j=i+1;j<n;j++){
-            
-            if((vec[j]-vec[i])==k){
-                res++;
-            }
+            mp[vec[i]]++;
         }
-       }
         return res;
     }
 };
